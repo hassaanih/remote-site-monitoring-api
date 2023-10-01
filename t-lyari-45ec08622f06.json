@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "t-lyari",
+  "private_key_id": "45ec08622f06aa3c62ba6561bad47370571af20c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDLtrp5o/cZz0gV\nK521Q0pf2ZWEF0hic5DLCZFhHutqRr61ltI3VkasgI80FC5mGGXJQcsaCfOpVdtf\nN9Qgt1CgMjNckpbGJUZ7Goc3FMQrPDjAa6YYUnMdYMm7oq+RBVuGHOI2VJrJaWfD\nX092oPnAsEiWW0irFxJI0rn9JVBwgac8IsteJ54/NnRMHOvGTUrr+cJNLmoMfA/w\nuV1dFHYNsXlbhCQfvsGYZcAi3E7Ns8Lu754T8AzmO+G46+JJx/9AjSmGHE5DLKNp\nCeu+7rq392L9csXJe5IEfnnzSlRJOsKUICeo3ypVo2VW0Oc+gna/t5EQSkgaKZti\n2mgkvi63AgMBAAECggEANAWV2Tpl/9FPNxjMTV3BwHhwFitb8MhSUYc/+O1McPdf\n/D9nr3n40lSCPWpp7uiMFbkXhK7F6phiTQ6UvUYS8NXhB+LnXfJm7Uj4/rfu4Jug\nYoMbB1sGypnM6n3BF+emV7lIi1dPr9+a/+l3AXRaUzqxTrRA+nAJ20708BB3WkNM\nigTGVbr7ENo1/8BF6MvL+RNaCMILeJzGrd63rpoHR8cIW3zknJFVIsC6L6TuUfJg\ncCTLw/WGDAMuiIJncURMN3cGsxzUBAirINXcAk0aal3j2F/cizImJ/zroxNNX5Dc\nvwqCf6I47osdQuR6XZsuk19BZA568r31GlVpSYYlAQKBgQD9qOf7Nb4HCj6bYtl3\ne9yPWaGrB+7hYdicE04zWd/MUGNEpAFoxmQJQXQ3Bsac8Pby10FYtqeX/w9e7qfS\nNeL+Fwf84F/fqDqJyPVZu902KBAcGJ83ACv7sAilalKE3OsAo7pfpu2UugAptkqY\nfLtISDrbW6MqqU/rqBhKIrXOPQKBgQDNl9wXtN/J7qWCXWuBXj0E63DDI4iloLkA\nLxRwyK+toLJNpFcqj9dEg6Q+dS8t11eyr1c0lohtDDvEsQsJ5ywEp0SXMySVQuOs\nUzdfOcBQUV4BC+2rfyyRhlcumaBuN3lri/FCtn2wwzlS6HO/y7pEwqf0zGUMx5j0\nYAr+soAUAwKBgB4lrfSITZ5ulERJekkeGnebEoDOP5Df3Suni7rEqrmQsEufJl+6\nfHcxJUvI7WAHr4HrHWQayU5iTQReXum359OFDzj5vctKJjLsBGT20/K0zj1Ym8ug\npJmUMWLfgREzZGa+Ds+Bemkbths/BBydbnDHzN73RCw01T/PyZs+BteNAoGAMAGg\nw+xZQSa3gPxdaQTfTLHJT9eRRdOEv1U++aLy2qEmYVjZfbe+tWHjzS3ByXt6H+Av\nhbkMvCHaJvCMOlC/h4qjSocHqM7IqOl5iYPLszV8tNPbOGtmtchfvSLkQjgz4vf3\navN/3/GGBiT/Oi7RHNMzMsczZUuKHK38g0KdA48CgYBkPezaaDt/ugvoNW58BeM2\nWG3g4tsPEXFWk7U8tb2ctT2kiXSrT6IbgJWECvCXpLW6Gi6hHDEuw50gR91vmda2\nCpNscCc1odUF8iJH5pNlhjrUO/CM37oT2Gawy3rwCLjcYRGNGXNV+d/v0C4Tav4q\nQQQMwsv4TQurMmHWR5wrPw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "watsunsa@t-lyari.iam.gserviceaccount.com",
+  "client_id": "106516656337156203101",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/watsunsa%40t-lyari.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
