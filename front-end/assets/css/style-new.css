@@ -52,7 +52,7 @@
 }
 
 .box {
-  width: 70%;
+  width: 80%;
   height: auto;
 }
 
@@ -191,11 +191,75 @@ canvas {
   /* Other background properties like background-color can be added here */
   /* Set the width and height of your container to control the size of the background */
   width: auto;
-  height: 100%;
-  aspect-ratio: 2;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* aspect-ratio: 2; */
 }
 
 .add-opacity{
   background-color: rgba(255, 255, 255, 0.7);
   width: 100% !important;
 }
+.main-login{
+  height: 100%;
+  width: 450px;
+}
+.mainnav{
+  position: absolute;
+  right: 25px;
+  top: 15px;
+}
+.mainnav-sub{
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+.logout-main{
+  list-style: none;
+  border-left: 1px solid #ddd;
+  padding-left: 15px;
+  height: 100%;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-left: 10px;
+}
+.logout-main a{
+  padding: 10px 20px;
+    background: #3564c1;
+    color: #fff;
+    border-radius: 12px;
+}
+.greatersign{
+  color: #ddd;
+  font-size: 14px;
+  padding: 0px 10px;
+}
+.dash-top{
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.dash-top label{
+  margin-bottom: 0px !important;
+}
+.dash-top-main{
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+.dash-top-main h5{
+  font-size: 14px;
+  margin-bottom: 0px;
+  padding-top: 8px;
+}
+.con-pagging{
+  padding: 0px 10px;
+}
+@media screen and (max-width: 1200px) {
+      .img-fluid{
+        width: 200px !important;
+      }
+    }

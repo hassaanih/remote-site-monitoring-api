@@ -1,40 +1,32 @@
 <main class="main-content mt-2">
-    <section>
-      <div class="page-header max-vh-100">
-        <div class="container d-flex justify-content-center mt-6">
-          <div class="row w-40">
-            <div class="col-lg-12 col-md-12 d-flex justify-content-center">
-              <div class="card add-opacity p-4">
-                <div class="d-flex justify-content-center">
-                  <img src="assets/img/watsun-logo.svg" class="img-fluid">
-                </div>
-                <div class="card-header pb-0 text-center">
-                  <h6 class="font-weight-bolder">Remote Site Monitoring System</h6>
-                </div>
-                <div class="card-body">
-                  <span ng-repeat="error in $ctrl.errors.general" class="text-danger text-xs font-weight-bolder">{{error}}</span>
-                  <form role="form" ng-submit="$ctrl.login()">
-                    <div class="mb-3">
-                      <input type="text" class="form-control form-control-md" ng-model="$ctrl.user.username" placeholder="Email" aria-label="Email">
-                    </div>
-                    <div class="mb-3">
-                      <input type="password" class="form-control form-control-md" ng-model="$ctrl.user.password" placeholder="Password" aria-label="Password">
-                    </div>
-
-                    <!-- <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="rememberMe">
-                      <label class="form-check-label" for="rememberMe">Remember me</label>
-                    </div> -->
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Sign in</button>
-                    </div>
-                  </form>
-                </div>
-                
-              </div>
-            </div>
-          </div>
+    <section class="main-login">
+      <div class="card add-opacity p-4">
+        <div class="d-flex justify-content-center">
+          <img src="assets/img/watsun-logo.svg" class="img-fluid">
         </div>
+        <div class="card-header pb-0 text-center">
+          <h6 class="font-weight-bolder">Remote Site Monitoring System</h6>
+        </div>
+        <div class="card-body">
+          <span ng-repeat="error in $ctrl.errors.general" class="text-danger text-xs font-weight-bolder">{{error}}</span>
+          <form role="form" ng-submit="$ctrl.login()">
+            <div class="mb-3">
+              <input type="text" class="form-control form-control-md" ng-model="$ctrl.user.username" placeholder="Email" aria-label="Email">
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control form-control-md" ng-model="$ctrl.user.password" placeholder="Password" aria-label="Password">
+            </div>
+
+            <!-- <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="rememberMe">
+              <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div> -->
+            <div class="text-center">
+              <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Sign in</button>
+            </div>
+          </form>
+        </div>
+        
       </div>
     </section>
   </main>
