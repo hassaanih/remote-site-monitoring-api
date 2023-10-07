@@ -258,6 +258,78 @@ canvas {
 .con-pagging{
   padding: 0px 10px;
 }
+.group-main{
+  width: calc(100vw - 2rem);
+  height: calc(100vh - 2rem);
+  display: flex;
+  align-items: center;
+    justify-content: center;
+    position: relative;
+}
+    .group-main::before{
+      width: calc(100% + 2rem);
+      height: calc(100% + 2rem);
+      left: -1rem;
+      top: -1rem;
+      position: absolute;
+      content: '';
+      background-image: url(../img/water-drop-2.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+.group-main-sub{
+  width: 80%;
+  height: 80%;
+  position: relative;
+  background: #ffffff91;
+  text-align: center;
+  border-radius: 15px;
+  padding: 0px 0px 30px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.group-main-img{
+
+}
+.group-main-img img{
+  text-align: center;
+  /* width: 220px; */
+}
+.group-main-sub h5{
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 0px;
+}
+.group-main-content{
+  width: 700px;
+  margin: 20px auto 0px;
+}
+.group-card{
+  width: 180px;
+  margin: 0 auto;
+}
+.group-card h6{
+  background: #3665C5;
+  margin-bottom: 15px;
+  color: #fff;
+  padding: 7px;
+  border-radius: 8px;
+}
+.group-card p{
+  margin-bottom: 0px;
+  background: #0000004f;
+  height: 110px;
+  color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+
+}
 @media screen and (max-width: 1200px) {
       .img-fluid{
         width: 200px !important;
