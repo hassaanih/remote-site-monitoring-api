@@ -168,7 +168,7 @@ export const avgflowRate1 = (req, res) => {
 
             const result = {};
             Object.keys(dayCounts).forEach((day) => {                
-                result[`${day}`] = dayCounts[day] !== 0 ? dayData[day] / dayCounts[day] : 0;
+                result[`${day.toLowerCase()}_avg`] = dayCounts[day] !== 0 ? dayData[day] / dayCounts[day] : 0;
             });
             return res.status(200).send({result, maxData});
         })

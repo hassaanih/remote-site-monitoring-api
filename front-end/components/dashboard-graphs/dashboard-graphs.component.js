@@ -28,9 +28,8 @@ angular.module("component").component("dashboardGraph", {
       ctrl.myInterval = $interval(function() {
         // Code to be executed periodically
         console.log('Interval is running...');
-        ctrl.initDashboardSection1Data();
-        ctrl.initDashboardSection2Data();
-      }, 3000); // Runs every 1000 milliseconds (1 second)
+        ctrl.initDashboardData();
+      }, 1000); // Runs every 1000 milliseconds (1 second)
     
       // Detect when the view is destroyed
       $scope.$on('$destroy', function() {
@@ -318,11 +317,11 @@ angular.module("component").component("dashboardGraph", {
         });
       };
 
-      ctrl.initDashboardSection1Data = function(){
+      ctrl.initDashboardData = function(){
         DashboardService.getFlowRate1().then(
           function success(response){
-            console.log(response.data.latestflowRate1);
-            let flow_rate_value = response.data.latestflowRate1.toFixed(2) ;
+            console.log(response.data[response.data.length - 1].value);
+            let flow_rate_value = response.data[response.data.length - 1].value.toFixed(2) ;
             ctrl.guageGraphRps1.setOption({
               series: [
                 {
@@ -336,55 +335,17 @@ angular.module("component").component("dashboardGraph", {
           }
         )
 
-        DashboardService.totalFt102hr().then(
-          function success(response){
-            console.log(response)
-            // let flow_rate_value = response.data.latestflowRate2.toFixed(2) ;
-            // ctrl.guageGraphRps2.setOption({
-            //   series: [
-            //     {
-            //       data: [{ value: flow_rate_value }],
-            //     },
-            //   ],
-            // })
-          },
-          function error(response){
-            console.log(response);
-          }
-        )
-      }
-
-      ctrl.initDashboardSection2Data = function(){
         DashboardService.getFlowRate2().then(
           function success(response){
-            console.log(response.data.latestflowRate1);
-            let flow_rate_value = response.data.latestflowRate2.toFixed(2) ;
-            ctrl.guageGraphRps1.setOption({
+            console.log(response.data[response.data.length - 1].value);
+            let flow_rate_value = response.data[response.data.length - 1].value.toFixed(2) ;
+            ctrl.guageGraphRps2.setOption({
               series: [
                 {
                   data: [{ value: flow_rate_value }],
                 },
               ],
             })
-          },
-          function error(response){
-            console.log(response);
-          }
-        )
-
-        DashboardService.totalFt102hr().then(
-          function success(response){
-            console.log(response.data.result);
-            let barData = [];
-            Object.keys()
-            // let flow_rate_value = response.data.latestflowRate2.toFixed(2) ;
-            // ctrl.guageGraphRps2.setOption({
-            //   series: [
-            //     {
-            //       data: [{ value: flow_rate_value }],
-            //     },
-            //   ],
-            // })
           },
           function error(response){
             console.log(response);

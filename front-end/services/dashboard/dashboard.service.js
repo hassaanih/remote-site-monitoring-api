@@ -5,14 +5,14 @@ function DashboardService($rootScope, $http, API_URL) {
     getFlowRate1: function () {
       return $http({
         method: 'POST',
-        url: API_URL + '/values/latestflowRate1'
+        url: API_URL + '/values/flowRate1'
       });
     },
 
     getFlowRate2: function () {
       return $http({
         method: 'POST',
-        url: API_URL + '/values/latestflowRate2'
+        url: API_URL + '/values/flowRate2'
       });
     },
 
@@ -33,14 +33,14 @@ function DashboardService($rootScope, $http, API_URL) {
     totalFt101hr: function () {
       return $http({
         method: 'POST',
-        url: API_URL + '/values/avgflowRate1'
+        url: API_URL + '/values/totalFt101hr'
       });
     },
 
     totalFt102hr: function () {
       return $http({
         method: 'POST',
-        url: API_URL + '/values/avgflowRate2'
+        url: API_URL + '/values/totalFt102hr'
       });
     },
     
