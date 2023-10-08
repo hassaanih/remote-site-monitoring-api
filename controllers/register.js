@@ -1,4 +1,4 @@
-import { db } from "../db.js";
+import { mysqldb } from "../db.js";
 
 export const register = (req, res) => {
     //CHECK USER
@@ -14,7 +14,7 @@ export const register = (req, res) => {
 
     const q = "INSERT INTO users (username, password, user_role, dash_head1, dash_head2, dash_head3, site_head1, site_head2, site_head3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    db.query(q, [username, password, user_role, dash_head1, dash_head2, dash_head3, site_head1, site_head2, site_head3], (err, data) => {
+    mysqldb.query(q, [username, password, user_role, dash_head1, dash_head2, dash_head3, site_head1, site_head2, site_head3], (err, data) => {
         if (err) {
             res.status(500).send(err);
         }
