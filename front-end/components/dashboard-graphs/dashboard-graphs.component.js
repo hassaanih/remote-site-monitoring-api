@@ -68,9 +68,11 @@ angular.module("component").component("dashboardGraph", {
           // },
           tooltip: {},
           xAxis: {
-            data: ["monday", "truesday", "wednesday", "thursday", "friday"],
+            data: ["Mon", "Tues", "Wed", "Thurs", "Fri"],
           },
-          yAxis: {},
+          yAxis: {
+            data: [0, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
+          },
           series: [
             {
               name: "sales",
@@ -87,9 +89,11 @@ angular.module("component").component("dashboardGraph", {
           // },
           tooltip: {},
           xAxis: {
-            data: ["monday", "truesday", "wednesday", "thursday", "friday"],
+            data: ["Mon", "Tues", "Wed", "Thurs", "Fri"],
           },
-          yAxis: {},
+          yAxis: {
+            data: [0 , 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
+          },
           series: [
             {
               name: "sales",
@@ -107,9 +111,11 @@ angular.module("component").component("dashboardGraph", {
           // },
           tooltip: {},
           xAxis: {
-            data: ["monday", "truesday", "wednesday", "thursday", "friday"],
+            data: ["Mon", "Tues", "Wed", "Thurs", "Fri"],
           },
-          yAxis: {},
+          yAxis: {
+            data: [0, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
+          },
           series: [
             {
               name: "sales",
@@ -170,7 +176,7 @@ angular.module("component").component("dashboardGraph", {
               },
               detail: {
                 valueAnimation: true,
-                formatter: "{value}",
+                formatter: "{value} \u33A5",
                 fontSize: 30,
                 color: "inherit",
                 offsetCenter: [0, "125%"],
@@ -233,7 +239,7 @@ angular.module("component").component("dashboardGraph", {
               },
               detail: {
                 valueAnimation: true,
-                formatter: "{value}",
+                formatter: "{value} \u33A5",
                 fontSize: 30,
                 color: "inherit",
                 offsetCenter: [0, "125%"],
@@ -296,7 +302,7 @@ angular.module("component").component("dashboardGraph", {
               },
               detail: {
                 valueAnimation: true,
-                formatter: "{value}",
+                formatter: "{value} \u33A5",
                 fontSize: 30,
                 color: "inherit",
                 offsetCenter: [0, "125%"],

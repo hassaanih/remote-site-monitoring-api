@@ -57,7 +57,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: black;
-  --bs-body-bg:#FFFFFF;
+  --bs-body-bg: #FFFFFF;
   --bs-border-width: 1px;
   --bs-border-style: solid;
   --bs-border-color: #dee2e6;
@@ -22527,11 +22527,12 @@ hr.horizontal.gray-light {
 
 .navbar-vertical.navbar-expand-xs {
   display: block;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  max-width: 15.625rem !important;
+  /* position: fixed; */
+  /* top: 0; */
+  /* bottom: 0; */
+  width: auto;
+  height: 100%;
+  /* max-width: 15.625rem !important; */
   overflow-y: auto;
   padding: 0;
   box-shadow: none;
@@ -23319,6 +23320,8 @@ hr.horizontal.gray-light {
 
   .g-sidenav-show:not(.rtl) .sidenav {
     transform: translateX(-17.125rem);
+    width: 0;
+    padding: 0 !important;
   }
 
   .g-sidenav-show .sidenav.fixed-start+.main-content {
@@ -26934,3 +26937,22 @@ pre[class*="language-"] {
 }
 
 /*# sourceMappingURL=dashboard-free.css.map */
+.newnav-link {
+  padding: 6px !important;
+  margin: 0px 0px 5px !important;
+}
+
+.newnav-link i {
+  color: #a3b6cc !important;
+}
+
+.navbar-vertical .navbar-nav>.nav-item .nav-link.active {
+  border-radius: 20px !important;
+  background: #3564c1 !important;
+  color: #fff !important;
+  box-shadow: 1px 0px 0px #3564c1;
+}
+
+.navbar-vertical .navbar-nav>.nav-item .nav-link.active i {
+  color: #fff !important;
+}

@@ -46,7 +46,7 @@ angular.module("component").component("auth", {
             console.log(response.data);
             // UserService.setUser(response.data);
             localStorage.setItem("user", JSON.stringify(response.data));
-            window.location.href = config.APP_URL + '#!/dashboard';
+            window.location.href = config.APP_URL + '#!/group';
 
             // localStorage.setItem("full_name", response.data.user.name);
             // localStorage.setItem("user_type_id", response.data.user.user_type_id);

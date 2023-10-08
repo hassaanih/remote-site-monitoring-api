@@ -11,24 +11,44 @@ const db = getDatabase();
 
 export const electrictyStatus = (req, res) => {
   const starCountRef = ref(db, "/ELECTRICITY STATUS");
-  let data;
-  let dataArray;
-  onValue(starCountRef, (snapshot) => {
-    data = snapshot.val();
-    if (data) {
-      // Convert the data to an array of objects
-      dataArray = Object.keys(data).map((key) => ({
-        id: key, // Include the key as an 'id' field in each object
-        value: !data[key].data ? data[key] : data[key].data, // Include the data from the original object
-        timestamp: data[key].timestamp ? data[key].timestamp : "",
-      }));
+  let dataArray = [];
 
-      // Remove the old data
-    } else {
-      console.log("No data found at the specified path.");
-    }
+  const getDataPromise = new Promise((resolve, reject) => {
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+  
+      if (data) {
+        dataArray = Object.keys(data).map((key) => ({
+          id: key,
+          value: !data[key].data ? data[key] : data[key].data,
+          timestamp: data[key].timestamp ? data[key].timestamp : "",
+        }));
+        resolve(dataArray);
+      } else {
+        reject("No data found at the specified path.");
+      }
+    });
   });
-  return res.status(200).send(data);
+
+  getDataPromise
+    .then((data) => {
+      const todayFormatted = new Date().toISOString().split("T")[0];
+      const todayValues = data.filter((entry) => {
+        if(entry.value){
+          if (entry.value.timestamp != '') {
+            const timestampDate = new Date(entry.value.timestamp);
+            const timestampFormatted = timestampDate.toISOString().split("T")[0];
+            return timestampFormatted === todayFormatted;
+          }
+          return false;
+        }
+      });
+      return res.status(200).json(todayValues);
+    })
+    .catch((error) => {
+      console.error(error);
+      return res.status(404).send("No data found");
+    });
 };
 
 export const flowRate1 = (req, res) => {

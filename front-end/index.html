@@ -89,6 +89,7 @@
 
   <!-- components -->
   <script src="components/auth/auth.component.js"></script>
+  <script src="components/group-select/group-select.component.js"></script>
   <script src="components/side-navigation/navigation.component.js"></script>
   <script src="components/navigation/navigation.component.js"></script>
   <script src="components/dashboard-graphs/dashboard-graphs.component.js"></script>
@@ -97,7 +98,7 @@
   <script src="components/user-add-update-modal/user-add-update-modal.component.js"></script>
 </head>
 
-<body class="g-sidenav-show">
+<body class="g-sidenav-show back-image">
   <script type="text/javascript"
     src="assets/theme/global/js/plugins/angular-dropdown-multiselect/angularjs-dropdown-multiselect.min.js"></script>
   <script type="text/javascript" src="assets/theme/global/js/plugins/ui/moment/moment.min.js"></script>
@@ -114,23 +115,18 @@
   <script src="assets/js/core/bootstrap.min.js"></script>
   <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <div class="row p-0">
-    <navigation></navigation>
-    <div class="col-lg-3">
-      <side-navigation></side-navigation>
-    </div>
-    <div class="col-lg-9">
+    
+  <navigation></navigation>
+  <div class="d-flex">
+    <side-navigation></side-navigation>
+    <div ng-view class="view-frame w-100 p-3" id="cnt"></div>
+  </div>  
       <!-- <main class="main-content position-relative border-radius"> -->
         <!-- <div class="page-content"> -->
           <!-- <div class="content-wrapper"> -->
-            <div ng-view class="view-frame" id="cnt"></div>
           <!-- </div> -->
           <!-- Main content -->
           <!-- /main content -->
-        </div>
-      </main>
-    </div>
-  </div>
   <!-- <navigation></navigation> -->
   <!-- Page content -->
   <!-- /page content -->
