@@ -7,15 +7,20 @@ import userRoutes from "./routes/user.js"
 import cors from 'cors';
 
 
-const app = express();
 const corsOptions = {
   origin: '*'
 }
 
+const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors(corsOptions));
+
+
+
+app.use(express.json());
+app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/values", valueRoutes);
