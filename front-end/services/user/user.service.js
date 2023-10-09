@@ -37,8 +37,8 @@ function UserService($http, API_URL) {
 
     list: function (){
       return $http({
-        method: "GET",
-        url: API_URL + '/user/list'
+        method: "POST",
+        url: API_URL + '/values/allusers'
       })
     },
     create: function (data){

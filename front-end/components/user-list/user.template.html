@@ -1,4 +1,4 @@
-<div class="container-fluid py-4">
+<div class="container-fluid py-6 mt-6 h-100">
   <div class="row">
     <div class="col-12">
       <div class="card mb-4">
@@ -27,18 +27,11 @@
               <thead>
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    Name
+                    Username
                   </th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                    Phone Number
+                    User Role
                   </th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                    Balance
-                  </th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                    User Type
-                  </th>
-
                   <th class="text-secondary opacity-7"></th>
                 </tr>
               </thead>
@@ -47,19 +40,13 @@
                   <td>
                     <div class="d-flex px-2 py-1">
                       <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm" ng-bind="user.name"></h6>
+                        <h6 class="mb-0 text-sm" ng-bind="user.username"></h6>
                         <p class="text-xs text-secondary mb-0" ng-bind="user.email"></p>
                       </div>
                     </div>
                   </td>
                   <td>
-                    <p class="text-xs font-weight-bold mb-0" ng-bind="user.contact_number"></p>
-                  </td>
-                  <td>
-                    <p class="text-xs font-weight-bold mb-0" ng-bind="user.assigned_balance"></p>
-                  </td>
-                  <td>
-                    <p class="text-xs text-uppercase font-weight-bold mb-0" ng-bind="user.user_type_id"></p>
+                    <p class="text-xs font-weight-bold mb-0" ng-bind="user.user_role"></p>
                   </td>
                   <td class="align-middle">
                     <!-- <div class="d-flex justify-content-center">
@@ -95,4 +82,4 @@
   </div>
 </div>
 <user-add-update></user-add-update>
-<user-add-credit-modal></user-add-credit-modal>
+<!-- <user-add-credit-modal></user-add-credit-modal> -->

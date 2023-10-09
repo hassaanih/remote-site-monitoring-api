@@ -374,7 +374,7 @@ export const totalFt102hr = (req, res) => {
 };
 
 export const getallusers = (req, res) => {
-    let query = "SELECT * FROM watersun.users;";
+    let query = "SELECT * FROM users;";
 
     const executeQuery = () => {
         return new Promise((resolve, reject) => {

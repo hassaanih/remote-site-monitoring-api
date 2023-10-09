@@ -22,6 +22,7 @@ angular.module("myApp").config([
       .when("/auth/:action", { template: "<auth></auth>", active: 'login'})
       .when("/group", { template: "<group-select></group-select>", active: 'login'})
       .when("/site", { template: "<site></site>", active: 'site' })
+      .when("/user", { template: "<user></user>", active: 'user' })
       .when("/dashboard", { template: "<dashboard></dashboard>", active: 'dashboard' })
       // .when("/lookupcountrylist", { template: "<lookup-country-list></lookup-country-list>" })
       // .when("/lookupstatelist", { template: "<lookup-state-list></lookup-state-list>" })

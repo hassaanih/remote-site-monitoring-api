@@ -30,7 +30,6 @@ angular.module("component").component("user", {
       ctrl.activeUserType = localStorage.getItem("user_type_id");
 
       ctrl.$onInit = function () {
-        $rootScope.$broadcast("Language::Change")
         ctrl.list();
       };
 
@@ -41,7 +40,7 @@ angular.module("component").component("user", {
       ctrl.list = function(){
         UserService.list().then(
           function success(response){
-            ctrl.userList = response.data.data;
+            ctrl.userList = response.data;
             console.log(ctrl.userList);
           },
           function error(response){

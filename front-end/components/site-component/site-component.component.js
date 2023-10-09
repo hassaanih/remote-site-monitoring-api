@@ -30,7 +30,8 @@ angular.module("component").component("site", {
       ctrl.myInterval = $interval(function() {
         // Code to be executed periodically
         console.log('Interval is running...');
-        ctrl.initDashboardData();
+        ctrl.initDashboardSection1Data();
+        ctrl.initDashboardSection2Data();
       }, 1000); // Runs every 1000 milliseconds (1 second)
     
       // Detect when the view is destroyed
