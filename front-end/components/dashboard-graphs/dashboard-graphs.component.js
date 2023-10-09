@@ -76,7 +76,7 @@ angular.module("component").component("dashboardGraph", {
           },
           series: [
             {
-              name: "sales",
+              name: "avg",
               type: "bar",
               data: [5, 20, 36, 10, 10, 20],
             },
@@ -97,7 +97,7 @@ angular.module("component").component("dashboardGraph", {
           },
           series: [
             {
-              name: "sales",
+              name: "avg",
               type: "bar",
               data: [5, 20, 36, 10, 10, 20],
             },
@@ -119,7 +119,7 @@ angular.module("component").component("dashboardGraph", {
           },
           series: [
             {
-              name: "sales",
+              name: "avg",
               type: "bar",
               data: [5, 20, 36, 10, 10, 20],
             },
@@ -336,17 +336,15 @@ angular.module("component").component("dashboardGraph", {
           }
         )
 
-        DashboardService.totalFt102hr().then(
+        DashboardService.totalFt101hr().then(
           function success(response){
             console.log(response)
-            // let flow_rate_value = response.data.latestflowRate2.toFixed(2) ;
-            // ctrl.guageGraphRps2.setOption({
-            //   series: [
-            //     {
-            //       data: [{ value: flow_rate_value }],
-            //     },
-            //   ],
-            // })
+            let barGraph1values = Object.values(response.data.result);
+            ctrl.barGraphRps1.setOption({
+              series: {
+                data: barGraph1values
+              }
+            })
           },
           function error(response){
             console.log(response);
@@ -376,15 +374,12 @@ angular.module("component").component("dashboardGraph", {
           function success(response){
             console.log(response.data.result);
             let barData = [];
-            // Object.keys()
-            // let flow_rate_value = response.data.latestflowRate2.toFixed(2) ;
-            // ctrl.guageGraphRps2.setOption({
-            //   series: [
-            //     {
-            //       data: [{ value: flow_rate_value }],
-            //     },
-            //   ],
-            // })
+            let barGraph2values = Object.values(response.data.result);
+            ctrl.barGraphRps2.setOption({
+              series: {
+                data: barGraph2values
+              }
+            })
           },
           function error(response){
             console.log(response);

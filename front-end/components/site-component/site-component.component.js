@@ -126,7 +126,7 @@ angular.module("component").component("site", {
           },
           series: [
             {
-              name: "sales",
+              name: "avg",
               type: "bar",
               data: [5, 20, 36, 10, 10, 20],
             },
@@ -147,7 +147,7 @@ angular.module("component").component("site", {
           },
           series: [
             {
-              name: "sales",
+              name: "avg",
               type: "bar",
               data: [5, 20, 36, 10, 10, 20],
             },
@@ -169,7 +169,7 @@ angular.module("component").component("site", {
           },
           series: [
             {
-              name: "sales",
+              name: "avg",
               type: "bar",
               data: [5, 20, 36, 10, 10, 20],
             },
@@ -477,11 +477,11 @@ angular.module("component").component("site", {
         });
       };
 
-      ctrl.initDashboardData = function(){
+      ctrl.initDashboardSection1Data = function(){
         DashboardService.getFlowRate1().then(
           function success(response){
-            console.log(response.data[response.data.length - 1].value);
-            let flow_rate_value = response.data[response.data.length - 1].value.toFixed(2) ;
+            console.log(response.data.latestflowRate1);
+            let flow_rate_value = response.data.latestflowRate1.toFixed(2) ;
             ctrl.guageGraphRps1.setOption({
               series: [
                 {
@@ -495,16 +495,49 @@ angular.module("component").component("site", {
           }
         )
 
+        DashboardService.totalFt101hr().then(
+          function success(response){
+            console.log(response)
+            let barGraph1values = Object.values(response.data.result);
+            ctrl.barGraphRps1.setOption({
+              series: {
+                data: barGraph1values
+              }
+            })
+          },
+          function error(response){
+            console.log(response);
+          }
+        )
+      }
+
+      ctrl.initDashboardSection2Data = function(){
         DashboardService.getFlowRate2().then(
           function success(response){
-            console.log(response.data[response.data.length - 1].value);
-            let flow_rate_value = response.data[response.data.length - 1].value.toFixed(2) ;
-            ctrl.guageGraphRps2.setOption({
+            console.log(response.data.latestflowRate1);
+            let flow_rate_value = response.data.latestflowRate2.toFixed(2) ;
+            ctrl.guageGraphRps1.setOption({
               series: [
                 {
                   data: [{ value: flow_rate_value }],
                 },
               ],
+            })
+          },
+          function error(response){
+            console.log(response);
+          }
+        )
+
+        DashboardService.totalFt102hr().then(
+          function success(response){
+            console.log(response.data.result);
+            let barData = [];
+            let barGraph2values = Object.values(response.data.result);
+            ctrl.barGraphRps2.setOption({
+              series: {
+                data: barGraph2values
+              }
             })
           },
           function error(response){
