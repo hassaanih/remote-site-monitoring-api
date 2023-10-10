@@ -27,15 +27,15 @@ angular.module("component").component("site", {
     ) {
       var ctrl = this;
 
-      ctrl.myInterval = $interval(function() {
+      ctrl.myInterval = $interval(function () {
         // Code to be executed periodically
-        console.log('Interval is running...');
+        console.log("Interval is running...");
         ctrl.initDashboardSection1Data();
         ctrl.initDashboardSection2Data();
       }, 1000); // Runs every 1000 milliseconds (1 second)
-    
+
       // Detect when the view is destroyed
-      $scope.$on('$destroy', function() {
+      $scope.$on("$destroy", function () {
         // Clear the interval when the view is changed or destroyed
         $interval.cancel(ctrl.myInterval);
       });
@@ -55,13 +55,13 @@ angular.module("component").component("site", {
         },
         {
           state: 1,
-          position: { x: 0.070, y: 0.49 },
+          position: { x: 0.07, y: 0.49 },
         },
         {
           state: 2,
           position: { x: 0.065, y: 0.085 },
         },
-        
+
         {
           state: 2,
           position: { x: 0.3167, y: 0.096 },
@@ -89,6 +89,14 @@ angular.module("component").component("site", {
         {
           state: 0, // Indicator state (0, 1, or 2)
           position: { x: 0.134, y: 0.9 }, // Relative position (values between 0 and 1)
+        },
+        {
+          state: 3, // Indicator state (0, 1, or 2)
+          position: { x: 0.825, y: 0.049 }, // Relative position (values between 0 and 1)
+        },
+        {
+          state: 3, // Indicator state (0, 1, or 2)
+          position: { x: 0.825, y: 0.26 }, // Relative position (values between 0 and 1)
         },
       ];
       ctrl.$onInit = function () {
@@ -123,7 +131,7 @@ angular.module("component").component("site", {
             data: ["Mon", "Tues", "Wed", "Thurs", "Fri"],
           },
           yAxis: {
-            data: [0, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
+            data: [0, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200],
           },
           series: [
             {
@@ -144,7 +152,7 @@ angular.module("component").component("site", {
             data: ["Mon", "Tues", "Wed", "Thurs", "Fri"],
           },
           yAxis: {
-            data: [0, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
+            data: [0, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200],
           },
           series: [
             {
@@ -166,7 +174,7 @@ angular.module("component").component("site", {
             data: ["Mon", "Tues", "Wed", "Thurs", "Fri"],
           },
           yAxis: {
-            data: [0, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
+            data: [0, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200],
           },
           series: [
             {
@@ -197,7 +205,7 @@ angular.module("component").component("site", {
                   ],
                 },
               },
-              
+
               max: 200,
               splitNumber: 2,
               pointer: {
@@ -260,7 +268,7 @@ angular.module("component").component("site", {
                   ],
                 },
               },
-              
+
               max: 200,
               splitNumber: 2,
               pointer: {
@@ -323,7 +331,7 @@ angular.module("component").component("site", {
                   ],
                 },
               },
-              
+
               max: 200,
               splitNumber: 2,
               pointer: {
@@ -392,17 +400,27 @@ angular.module("component").component("site", {
             var x = indicator.position.x * canvas.width;
             var y = indicator.position.y * canvas.height;
 
+            if (indicator.state == 3) {
+              context.font = "30px Arial";
+              context.fillStyle = "blue";
+              context.textAlign = "center";
+              context.textBaseline = "middle";
+              context.fillText("abc", indicator.x, indicator.y);
+              return;
+            } else {
+              context.beginPath();
+              context.arc(x, y, 8 * aspectRatio, 0, 2 * Math.PI);
+              context.fillStyle =
+                indicator.state === 0
+                  ? "red"
+                  : indicator.state === 1
+                  ? "green"
+                  : "grey";
+              context.fill();
+              context.closePath();
+            }
+
             // Customize indicator styles based on indicator.state
-            context.beginPath();
-            context.arc(x, y, 8 * aspectRatio, 0, 2 * Math.PI);
-            context.fillStyle =
-              indicator.state === 0
-                ? "red"
-                : indicator.state === 1
-                ? "green"
-                : "grey";
-            context.fill();
-            context.closePath();
           });
         };
       };
@@ -425,7 +443,7 @@ angular.module("component").component("site", {
           },
           yAxis: {
             type: "category",
-            data: ['0', '1'],
+            data: ["0", "1"],
           },
           series: [
             {
@@ -446,7 +464,7 @@ angular.module("component").component("site", {
           },
           yAxis: {
             type: "category",
-            data: ['0', '1'],
+            data: ["0", "1"],
           },
           series: [
             {
@@ -467,7 +485,7 @@ angular.module("component").component("site", {
           },
           yAxis: {
             type: "category",
-            data: ['0', '1'],
+            data: ["0", "1"],
           },
           series: [
             {
@@ -478,74 +496,74 @@ angular.module("component").component("site", {
         });
       };
 
-      ctrl.initDashboardSection1Data = function(){
+      ctrl.initDashboardSection1Data = function () {
         DashboardService.getFlowRate1().then(
-          function success(response){
+          function success(response) {
             console.log(response.data.latestflowRate1);
-            let flow_rate_value = response.data.latestflowRate1.toFixed(2) ;
+            let flow_rate_value = response.data.latestflowRate1.toFixed(2);
             ctrl.guageGraphRps1.setOption({
               series: [
                 {
                   data: [{ value: flow_rate_value }],
                 },
               ],
-            })
+            });
           },
-          function error(response){
+          function error(response) {
             console.log(response);
           }
-        )
+        );
 
         DashboardService.totalFt101hr().then(
-          function success(response){
-            console.log(response)
+          function success(response) {
+            console.log(response);
             let barGraph1values = Object.values(response.data.result);
             ctrl.barGraphRps1.setOption({
               series: {
-                data: barGraph1values
-              }
-            })
+                data: barGraph1values,
+              },
+            });
           },
-          function error(response){
+          function error(response) {
             console.log(response);
           }
-        )
-      }
+        );
+      };
 
-      ctrl.initDashboardSection2Data = function(){
+      ctrl.initDashboardSection2Data = function () {
         DashboardService.getFlowRate2().then(
-          function success(response){
+          function success(response) {
             console.log(response.data.latestflowRate1);
-            let flow_rate_value = response.data.latestflowRate2.toFixed(2) ;
+            let flow_rate_value = response.data.latestflowRate2.toFixed(2);
             ctrl.guageGraphRps1.setOption({
               series: [
                 {
                   data: [{ value: flow_rate_value }],
                 },
               ],
-            })
+            });
           },
-          function error(response){
+          function error(response) {
             console.log(response);
           }
-        )
+        );
 
         DashboardService.totalFt102hr().then(
-          function success(response){
+          function success(response) {
             console.log(response.data.result);
             let barData = [];
             let barGraph2values = Object.values(response.data.result);
             ctrl.barGraphRps2.setOption({
               series: {
-                data: barGraph2values
-              }
-            })
+                data: barGraph2values,
+              },
+            });
           },
-          function error(response){
+          function error(response) {
             console.log(response);
           }
-        )
-      }
+        );
+      };
     },
   ],
 });
