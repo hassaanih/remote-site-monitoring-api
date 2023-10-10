@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle" translate-language="User">User</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">User</h5>
         <a data-dismiss="modal" aria-label="Close" ng-click="$ctrl.closeModal()">
           <span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-x-circle" viewBox="0 0 16 16">
@@ -17,13 +17,13 @@
       <div class="modal-body">
         <div class="row mb-2">
           <div class="col-lg-3">
-            <label class="form-label" translate-language="User Type">User Type: </label>
+            <label class="form-label">User Type: </label>
           </div>
           <div class="col-lg-9">
             <select class="form-control" ng-model="$ctrl.user.user_role">
               <option value="">Select a user type</option>
-              <option value="manager">Admin</option>
-              <option value="agent">User</option>
+              <option value="admin">Admin</option>
+              <option value="user">User</option>
             </select>
             <span class="text-danger" ng-repeat="error in $ctrl.error.user_role" ng-bind="error"></span>
           </div>
@@ -39,7 +39,7 @@
         </div>
         <div class="row mb-2">
           <div class="col-lg-3">
-            <label class="form-label" translate-language="Password">Password: </label>
+            <label class="form-label">Password: </label>
           </div>
           <div class="col-lg-9">
             <input class="form-control" type="password" ng-model="$ctrl.user.password"/>

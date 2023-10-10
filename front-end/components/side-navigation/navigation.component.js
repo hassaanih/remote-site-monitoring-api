@@ -32,12 +32,11 @@ angular.
           console.log("Route::change");
           console.log(ctrl.route.active);
           ctrl.isLogin = UserService.authenticate();
-          ctrl.activeUserType = localStorage.getItem("user_type_id");
+          ctrl.activeUser = localStorage.getItem("user");
         });
         ctrl.$onInit = function () {
-          $rootScope.$broadcast("Language::Change")
           console.log(ctrl.route);
-          ctrl.activeUserType = localStorage.getItem("user_type_id");
+          ctrl.activeUser = localStorage.getItem("user");
           // setInterval(function(){
           //   NotificationService.getNotifications().then(
           //     function success(response){

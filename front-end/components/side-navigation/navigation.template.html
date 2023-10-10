@@ -28,7 +28,7 @@
           <span class="nav-link-text ms-1">Remote Site 1</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" ng-show="$ctrl.activeUser.user_role == 'admin'">
         <a class="nav-link newnav-link" ng-class="{'active': $ctrl.route.current.active == 'user'}"
           href="#!/user">
           <div
