@@ -6,10 +6,24 @@ import { firebaseConfig } from "../fbConfig.js";
 import { getDatabase, ref, onValue } from "firebase/database";
 
 
-const daysOfWeek = eachDayOfInterval({
-    start: new Date(new Date().setDate(new Date().getDate() - 5)),
-    end: new Date(new Date().setDate(new Date().getDate() + 1))
-});
+const getStartAndEndDateOfWeek = () => {
+    const today = new Date();
+    const dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
+
+    // Calculate the start date of the week (Sunday)
+    const startDate = new Date(today);
+    startDate.setDate(today.getDate() - dayOfWeek);
+
+    // Calculate the end date of the week (Saturday)
+    const endDate = new Date(today);
+    endDate.setDate(today.getDate() + (6 - dayOfWeek));
+
+    // Format the dates as strings (YYYY-MM-DD)
+    const formattedStartDate = startDate.toISOString().split('T')[0];
+    const formattedEndDate = endDate.toISOString().split('T')[0];
+
+    return { startDate: formattedStartDate, endDate: formattedEndDate };
+}
 
 const getDateinText = (date) => {
     const dateObj = new Date(date);
@@ -19,11 +33,17 @@ const getDateinText = (date) => {
 
     return year + "-" + month + "-" + day;
 }
+const startAndEndDate = getStartAndEndDateOfWeek();
+
+const daysOfWeek = eachDayOfInterval({
+    start: new Date(startAndEndDate.startDate),
+    end: new Date(startAndEndDate.endDate)
+});
+
 // Create a new array with dates only (without time)
 const datesOnly = daysOfWeek.map(date => {
     return getDateinText(date);
 });
-
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -154,12 +174,11 @@ export const avgflowRate1 = (req, res) => {
 
             dataArray.forEach((elem) => {
                 if (elem.timestamp !== undefined) {
-                    maxData = elem.data > maxData ? elem.data : maxData;
-
                     const day = days[new Date(elem.timestamp).getDay()];
                     const dateText = getDateinText(new Date(elem.timestamp));
 
                     if (datesOnly.includes(dateText)) {
+                        maxData = elem.data > maxData ? elem.data : maxData;
                         dayCounts[day]++;
                         dayData[day] += elem.data;
                     }
@@ -167,10 +186,10 @@ export const avgflowRate1 = (req, res) => {
             });
 
             const result = {};
-            Object.keys(dayCounts).forEach((day) => {                
+            Object.keys(dayCounts).forEach((day) => {
                 result[`${day.toLowerCase()}_avg`] = dayCounts[day] !== 0 ? dayData[day] / dayCounts[day] : 0;
             });
-            return res.status(200).send({result, maxData});
+            return res.status(200).send({ result, maxData });
         })
         .catch((error) => {
             console.error('Error fetching data:', error);
@@ -276,23 +295,22 @@ export const avgflowRate2 = (req, res) => {
 
             dataArray.forEach((elem) => {
                 if (elem.timestamp !== undefined) {
-                    maxData = elem.data > maxData ? elem.data : maxData;
-                    
                     const day = days[new Date(elem.timestamp).getDay()];
                     const dateText = getDateinText(new Date(elem.timestamp));
-
                     if (datesOnly.includes(dateText)) {
+                        maxData = elem.data > maxData ? elem.data : maxData;
                         dayCounts[day]++;
                         dayData[day] += elem.data;
                     }
+
                 }
             });
 
             const result = {};
-            Object.keys(dayCounts).forEach((day) => {                
+            Object.keys(dayCounts).forEach((day) => {
                 result[`${day.toLowerCase()}_avg`] = dayCounts[day] !== 0 ? dayData[day] / dayCounts[day] : 0;
             });
-            return res.status(200).send({result, maxData});
+            return res.status(200).send({ result, maxData });
         })
         .catch((error) => {
             console.error('Error fetching data:', error);
