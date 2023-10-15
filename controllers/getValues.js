@@ -90,7 +90,13 @@ export const flowRate1 = (req, res) => {
     };
 
     getData()
-        .then((data) => {
+        .then((data2) => {
+            let data = Object.values(data2).map(item => {
+                return {
+                    data: item.data * 264,
+                    timestamp: item.timestamp
+                }
+            });
             return res.status(200).send(data);
         })
         .catch((error) => {
@@ -120,7 +126,7 @@ export const latestflowRate1 = (req, res) => {
             const dataArray = Object.values(data);
             const lastElement = dataArray[dataArray.length - 1];
             return res.status(200).send({
-                latestflowRate1: lastElement.data
+                latestflowRate1: lastElement.data * 264
             });
         })
         .catch((error) => {
@@ -184,10 +190,10 @@ export const avgflowRate1 = (req, res) => {
                     }
                 }
             });
-
+            maxData = maxData*264;
             const result = {};
             Object.keys(dayCounts).forEach((day) => {
-                result[`${day.toLowerCase()}_avg`] = dayCounts[day] !== 0 ? dayData[day] / dayCounts[day] : 0;
+                result[`${day.toLowerCase()}_avg`] = dayCounts[day] !== 0 ? (dayData[day] / dayCounts[day]) * 264 : 0;
             });
             return res.status(200).send({ result, maxData });
         })
@@ -213,7 +219,13 @@ export const flowRate2 = (req, res) => {
     };
 
     getData()
-        .then((data) => {
+        .then((data2) => {
+            let data = Object.values(data2).map(item => {
+                return {
+                    data: item.data * 264,
+                    timestamp: item.timestamp
+                }
+            });
             return res.status(200).send(data);
         })
         .catch((error) => {
@@ -241,7 +253,7 @@ export const latestflowRate2 = (req, res) => {
             const dataArray = Object.values(data);
             const lastElement = dataArray[dataArray.length - 1];
             return res.status(200).send({
-                latestflowRate2: lastElement.data
+                latestflowRate2: lastElement.data*264
             });
         })
         .catch((error) => {
@@ -306,9 +318,10 @@ export const avgflowRate2 = (req, res) => {
                 }
             });
 
+            maxData = maxData * 264;
             const result = {};
             Object.keys(dayCounts).forEach((day) => {
-                result[`${day.toLowerCase()}_avg`] = dayCounts[day] !== 0 ? dayData[day] / dayCounts[day] : 0;
+                result[`${day.toLowerCase()}_avg`] = dayCounts[day] !== 0 ? (dayData[day] / dayCounts[day])*264 : 0;
             });
             return res.status(200).send({ result, maxData });
         })
@@ -358,7 +371,13 @@ export const totalFt101hr = (req, res) => {
     };
 
     getData()
-        .then((data) => {
+        .then((data2) => {
+            let data = Object.values(data2).map(item => {
+                return {
+                    data: item.data * 264,
+                    timestamp: item.timestamp
+                }
+            });
             return res.status(200).send(data);
         })
         .catch((error) => {
@@ -382,7 +401,13 @@ export const totalFt102hr = (req, res) => {
     };
 
     getData()
-        .then((data) => {
+        .then((data2) => {
+            let data = Object.values(data2).map(item => {
+                return {
+                    data: item.data * 264,
+                    timestamp: item.timestamp
+                }
+            });
             return res.status(200).send(data);
         })
         .catch((error) => {
