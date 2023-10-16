@@ -140,14 +140,14 @@ angular.module("component").component("dashboardGraph", {
                 lineStyle: {
                   width: 10,
                   color: [
-                    [0.5, "#719415"],
-                    [0.9, "#D1BF09"],
+                    [0.3, "#719415"],
+                    [0.6, "#D1BF09"],
                     [1, "#E50E0E"],
                   ],
                 },
               },
               
-              max: 200,
+              max: 20000,
               splitNumber: 2,
               pointer: {
                 itemStyle: {
@@ -177,14 +177,14 @@ angular.module("component").component("dashboardGraph", {
               },
               detail: {
                 valueAnimation: true,
-                formatter: "{value} \u33A5",
+                formatter: "{value} G",
                 fontSize: 30,
                 color: "inherit",
                 offsetCenter: [0, "125%"],
               },
               data: [
                 {
-                  value: 70,
+                  value: 0,
                 },
               ],
             },
@@ -203,14 +203,14 @@ angular.module("component").component("dashboardGraph", {
                 lineStyle: {
                   width: 10,
                   color: [
-                    [0.5, "#719415"],
-                    [0.9, "#D1BF09"],
+                    [0.3, "#719415"],
+                    [0.6, "#D1BF09"],
                     [1, "#E50E0E"],
                   ],
                 },
               },
               
-              max: 200,
+              max: 20000,
               splitNumber: 2,
               pointer: {
                 itemStyle: {
@@ -240,14 +240,14 @@ angular.module("component").component("dashboardGraph", {
               },
               detail: {
                 valueAnimation: true,
-                formatter: "{value} \u33A5",
+                formatter: "{value} G",
                 fontSize: 30,
                 color: "inherit",
                 offsetCenter: [0, "125%"],
               },
               data: [
                 {
-                  value: 70,
+                  value: 0,
                 },
               ],
             },
@@ -266,14 +266,14 @@ angular.module("component").component("dashboardGraph", {
                 lineStyle: {
                   width: 10,
                   color: [
-                    [0.5, "#719415"],
-                    [0.9, "#D1BF09"],
+                    [0.3, "#719415"],
+                    [0.6, "#D1BF09"],
                     [1, "#E50E0E"],
                   ],
                 },
               },
               
-              max: 200,
+              max: 20000,
               splitNumber: 2,
               pointer: {
                 itemStyle: {
@@ -303,7 +303,7 @@ angular.module("component").component("dashboardGraph", {
               },
               detail: {
                 valueAnimation: true,
-                formatter: "{value} \u33A5",
+                formatter: "{value} G",
                 fontSize: 30,
                 color: "inherit",
                 offsetCenter: [0, "125%"],
