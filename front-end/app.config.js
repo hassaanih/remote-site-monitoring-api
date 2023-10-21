@@ -75,12 +75,12 @@ angular.module("myApp").config([
             //appAlert('', 'You are not allow to access this resource. contact adminitrator.', 'error');
           }
 
-          if(response.status == -1){
-            Toast.fire({
-              icon: 'warning',
-              title: 'No Internet Connection'
-            });
-          }
+          // if(response.status == -1){
+          //   Toast.fire({
+          //     icon: 'warning',
+          //     title: 'No Internet Connection'
+          //   });
+          // }
           return $q.reject(response);
         },
       };

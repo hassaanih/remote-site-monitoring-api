@@ -72,11 +72,11 @@ angular.module("component").component("dashboardGraph", {
             data: ["Mon", "Tues", "Wed", "Thurs", "Fri"],
           },
           yAxis: {
-            data: [0, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
+            data: ['25K', "50K", '75K', "100K", '125K', '150K',  "175K", '200K', '250K']
           },
           series: [
             {
-              name: "avg",
+              name: "Total Daily Production",
               type: "bar",
               data: [5, 20, 36, 10, 10, 20],
             },
@@ -93,11 +93,11 @@ angular.module("component").component("dashboardGraph", {
             data: ["Mon", "Tues", "Wed", "Thurs", "Fri"],
           },
           yAxis: {
-            data: [0 , 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
+            data: [0 , 3960 , 6600, 11800,  15840, 20000]
           },
           series: [
             {
-              name: "avg",
+              name: "Total Daily Production",
               type: "bar",
               data: [5, 20, 36, 10, 10, 20],
             },
@@ -115,11 +115,11 @@ angular.module("component").component("dashboardGraph", {
             data: ["Mon", "Tues", "Wed", "Thurs", "Fri"],
           },
           yAxis: {
-            data: [0, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
+            data: [0 , 3960 , 6600, 11800,  15840, 20000]
           },
           series: [
             {
-              name: "avg",
+              name: "Total Daily Production",
               type: "bar",
               data: [5, 20, 36, 10, 10, 20],
             },
@@ -141,9 +141,9 @@ angular.module("component").component("dashboardGraph", {
                   width: 10,
                   color: [
                     [0.2, "#E50E0E"],
-                    [0.4, "#D1BF09"],
-                    [0.6, "#719415"],
-                    [0.8, "#719415"],
+                    [0.3, "#D1BF09"],
+                    [0.7, "#719415"],
+                    [0.8, "#D1BF09"],
                     [1, "#E50E0E"],
                   ],
                 },
@@ -183,7 +183,7 @@ angular.module("component").component("dashboardGraph", {
               },
               detail: {
                 valueAnimation: true,
-                formatter: "{value} G",
+                formatter: "{value} G/h",
                 fontSize: 30,
                 color: "inherit",
                 offsetCenter: [0, "125%"],
@@ -209,15 +209,17 @@ angular.module("component").component("dashboardGraph", {
                 lineStyle: {
                   width: 10,
                   color: [
-                    [0.3, "#719415"],
-                    [0.6, "#D1BF09"],
+                    [0.2, "#E50E0E"],
+                    [0.3, "#D1BF09"],
+                    [0.7, "#719415"],
+                    [0.8, "#D1BF09"],
                     [1, "#E50E0E"],
                   ],
                 },
               },
               
               max: 20000,
-              splitNumber: 2,
+              splitNumber: 6,
               pointer: {
                 itemStyle: {
                   color: "auto",
@@ -228,7 +230,7 @@ angular.module("component").component("dashboardGraph", {
                 length: 10,
                 lineStyle: {
                   color: "#fff",
-                  width: 2,
+                  width: 1,
                 },
               },
               splitLine: {
@@ -241,12 +243,16 @@ angular.module("component").component("dashboardGraph", {
               },
               axisLabel: {
                 color: "inherit",
-                distance: -40,
+                distance: -45,
                 fontSize: 15,
+                formatter: function (value) {
+                  return value.toFixed(0); // Set the labels to have 2 decimal places
+                },
+                
               },
               detail: {
                 valueAnimation: true,
-                formatter: "{value} G",
+                formatter: "{value} G/h",
                 fontSize: 30,
                 color: "inherit",
                 offsetCenter: [0, "125%"],
@@ -272,15 +278,17 @@ angular.module("component").component("dashboardGraph", {
                 lineStyle: {
                   width: 10,
                   color: [
-                    [0.3, "#719415"],
-                    [0.6, "#D1BF09"],
+                    [0.2, "#E50E0E"],
+                    [0.3, "#D1BF09"],
+                    [0.7, "#719415"],
+                    [0.8, "#D1BF09"],
                     [1, "#E50E0E"],
                   ],
                 },
               },
               
               max: 20000,
-              splitNumber: 2,
+              splitNumber: 6,
               pointer: {
                 itemStyle: {
                   color: "auto",
@@ -291,7 +299,7 @@ angular.module("component").component("dashboardGraph", {
                 length: 10,
                 lineStyle: {
                   color: "#fff",
-                  width: 2,
+                  width: 1,
                 },
               },
               splitLine: {
@@ -304,12 +312,16 @@ angular.module("component").component("dashboardGraph", {
               },
               axisLabel: {
                 color: "inherit",
-                distance: -40,
+                distance: -45,
                 fontSize: 15,
+                formatter: function (value) {
+                  return value.toFixed(0); // Set the labels to have 2 decimal places
+                },
+                
               },
               detail: {
                 valueAnimation: true,
-                formatter: "{value} G",
+                formatter: "{value} G/h",
                 fontSize: 30,
                 color: "inherit",
                 offsetCenter: [0, "125%"],

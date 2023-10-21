@@ -35,6 +35,16 @@ appz.constant("Constant", {
   },
 });
 
+appz.filter('numberToK', function() {
+  return function(input) {
+    if (isNaN(input)) return input;
+    if (input < 1000) return input;
+    if (input < 1000000) return (input / 1000).toFixed(1) + 'K';
+    if (input < 1000000000) return (input / 1000000).toFixed(1) + 'M';
+    return (input / 1000000000).toFixed(1) + 'B';
+  };
+});
+
 appz.filter("propsFilter", function () {
   return function (items, props) {
     var out = [];

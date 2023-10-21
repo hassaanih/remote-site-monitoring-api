@@ -42,6 +42,8 @@ angular.module("component").component("site", {
       ctrl.barGraphRps1;
       ctrl.barGraphRps2;
       ctrl.barGraphRps3;
+      ctrl.flow_rate_value1;
+      ctrl.flow_rate_value2;
       ctrl.guageGraphRps1;
       ctrl.guageGraphRps1;
       ctrl.guageGraphRps1;
@@ -199,15 +201,17 @@ angular.module("component").component("site", {
                 lineStyle: {
                   width: 10,
                   color: [
-                    [0.5, "#719415"],
-                    [0.9, "#D1BF09"],
+                    [0.2, "#E50E0E"],
+                    [0.3, "#D1BF09"],
+                    [0.7, "#719415"],
+                    [0.8, "#D1BF09"],
                     [1, "#E50E0E"],
                   ],
                 },
               },
-
-              max: 200,
-              splitNumber: 2,
+              
+              max: 20000,
+              splitNumber: 6,
               pointer: {
                 itemStyle: {
                   color: "auto",
@@ -218,7 +222,7 @@ angular.module("component").component("site", {
                 length: 10,
                 lineStyle: {
                   color: "#fff",
-                  width: 2,
+                  width: 1,
                 },
               },
               splitLine: {
@@ -231,12 +235,16 @@ angular.module("component").component("site", {
               },
               axisLabel: {
                 color: "inherit",
-                distance: -40,
+                distance: -45,
                 fontSize: 15,
+                formatter: function (value) {
+                  return value.toFixed(0); // Set the labels to have 2 decimal places
+                },
+                
               },
               detail: {
                 valueAnimation: true,
-                formatter: "{value} G",
+                formatter: "{value} G/h",
                 fontSize: 30,
                 color: "inherit",
                 offsetCenter: [0, "125%"],
@@ -262,15 +270,17 @@ angular.module("component").component("site", {
                 lineStyle: {
                   width: 10,
                   color: [
-                    [0.3, "#719415"],
-                    [0.6, "#D1BF09"],
+                    [0.2, "#E50E0E"],
+                    [0.3, "#D1BF09"],
+                    [0.7, "#719415"],
+                    [0.8, "#D1BF09"],
                     [1, "#E50E0E"],
                   ],
                 },
               },
               
               max: 20000,
-              splitNumber: 2,
+              splitNumber: 6,
               pointer: {
                 itemStyle: {
                   color: "auto",
@@ -281,7 +291,7 @@ angular.module("component").component("site", {
                 length: 10,
                 lineStyle: {
                   color: "#fff",
-                  width: 2,
+                  width: 1,
                 },
               },
               splitLine: {
@@ -294,12 +304,16 @@ angular.module("component").component("site", {
               },
               axisLabel: {
                 color: "inherit",
-                distance: -40,
+                distance: -45,
                 fontSize: 15,
+                formatter: function (value) {
+                  return value.toFixed(0); // Set the labels to have 2 decimal places
+                },
+                
               },
               detail: {
                 valueAnimation: true,
-                formatter: "{value} G",
+                formatter: "{value} G/h",
                 fontSize: 30,
                 color: "inherit",
                 offsetCenter: [0, "125%"],
@@ -325,15 +339,17 @@ angular.module("component").component("site", {
                 lineStyle: {
                   width: 10,
                   color: [
-                    [0.3, "#719415"],
-                    [0.6, "#D1BF09"],
+                    [0.2, "#E50E0E"],
+                    [0.3, "#D1BF09"],
+                    [0.7, "#719415"],
+                    [0.8, "#D1BF09"],
                     [1, "#E50E0E"],
                   ],
                 },
               },
               
               max: 20000,
-              splitNumber: 2,
+              splitNumber: 6,
               pointer: {
                 itemStyle: {
                   color: "auto",
@@ -344,7 +360,7 @@ angular.module("component").component("site", {
                 length: 10,
                 lineStyle: {
                   color: "#fff",
-                  width: 2,
+                  width: 1,
                 },
               },
               splitLine: {
@@ -357,12 +373,16 @@ angular.module("component").component("site", {
               },
               axisLabel: {
                 color: "inherit",
-                distance: -40,
+                distance: -45,
                 fontSize: 15,
+                formatter: function (value) {
+                  return value.toFixed(0); // Set the labels to have 2 decimal places
+                },
+                
               },
               detail: {
                 valueAnimation: true,
-                formatter: "{value} G",
+                formatter: "{value} G/h",
                 fontSize: 30,
                 color: "inherit",
                 offsetCenter: [0, "125%"],
@@ -447,7 +467,7 @@ angular.module("component").component("site", {
           },
           series: [
             {
-              data: [false, true],
+              data: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
               type: "line",
             },
           ],
@@ -468,7 +488,7 @@ angular.module("component").component("site", {
           },
           series: [
             {
-              data: [false, true],
+              data: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
               type: "line",
             },
           ],
@@ -489,7 +509,7 @@ angular.module("component").component("site", {
           },
           series: [
             {
-              data: [false, true],
+              data: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
               type: "line",
             },
           ],
@@ -500,11 +520,11 @@ angular.module("component").component("site", {
         DashboardService.getFlowRate1().then(
           function success(response) {
             console.log(response.data.latestflowRate1);
-            let flow_rate_value = response.data.latestflowRate1.toFixed(2);
+            ctrl.flow_rate_value1 = response.data.latestflowRate1.toFixed(2);
             ctrl.guageGraphRps1.setOption({
               series: [
                 {
-                  data: [{ value: flow_rate_value }],
+                  data: [{ value: ctrl.flow_rate_value1 }],
                 },
               ],
             });
@@ -534,11 +554,11 @@ angular.module("component").component("site", {
         DashboardService.getFlowRate2().then(
           function success(response) {
             console.log(response.data.latestflowRate1);
-            let flow_rate_value = response.data.latestflowRate2.toFixed(2);
+            ctrl.flow_rate_value2 = response.data.latestflowRate2.toFixed(2);
             ctrl.guageGraphRps1.setOption({
               series: [
                 {
-                  data: [{ value: flow_rate_value }],
+                  data: [{ value: ctrl.flow_rate_value2 }],
                 },
               ],
             });
