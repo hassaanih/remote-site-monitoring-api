@@ -25,12 +25,12 @@ angular.module("component").component("dashboardGraph", {
     ) {
       var ctrl = this;
 
-      ctrl.myInterval = $interval(function() {
-        // Code to be executed periodically
-        console.log('Interval is running...');
-        ctrl.initDashboardSection1Data();
-        ctrl.initDashboardSection2Data();
-      }, 3000); // Runs every 1000 milliseconds (1 second)
+      // ctrl.myInterval = $interval(function() {
+      //   // Code to be executed periodically
+      //   console.log('Interval is running...');
+      //   ctrl.initDashboardSection1Data();
+      //   ctrl.initDashboardSection2Data();
+      // }, 3000); // Runs every 1000 milliseconds (1 second)
     
       // Detect when the view is destroyed
       $scope.$on('$destroy', function() {
@@ -49,6 +49,8 @@ angular.module("component").component("dashboardGraph", {
         console.log(ctrl.authUser);
         ctrl.initBarGraph();
         ctrl.initGuageGraph();
+        ctrl.initDashboardSection1Data();
+        ctrl.initDashboardSection2Data();
         window.addEventListener("resize", function () {
           ctrl.barGraphRps1.resize();
           ctrl.barGraphRps2.resize();
