@@ -555,9 +555,9 @@ angular.module("component").component("site", {
       ctrl.initDashboardSection2Data = function () {
         DashboardService.getFlowRate2().then(
           function success(response) {
-            console.log(response.data.latestflowRate1);
+            console.log(response.data.latestflowRate2);
             ctrl.flow_rate_value2 = response.data.latestflowRate2.toFixed(2);
-            ctrl.guageGraphRps1.setOption({
+            ctrl.guageGraphRps2.setOption({
               series: [
                 {
                   data: [{ value: ctrl.flow_rate_value2 }],
