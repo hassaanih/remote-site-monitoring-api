@@ -93,7 +93,7 @@ export const flowRate1 = (req, res) => {
         .then((data2) => {
             let data = Object.values(data2).map(item => {
                 return {
-                    data: item.data * 264,
+                    data: item.data,
                     timestamp: item.timestamp
                 }
             });
@@ -126,7 +126,7 @@ export const latestflowRate1 = (req, res) => {
             const dataArray = Object.values(data);
             const lastElement = dataArray[dataArray.length - 1];
             return res.status(200).send({
-                latestflowRate1: lastElement.data * 264
+                latestflowRate1: lastElement.data
             });
         })
         .catch((error) => {
@@ -190,10 +190,9 @@ export const avgflowRate1 = (req, res) => {
                     }
                 }
             });
-            maxData = maxData*264;
             const result = {};
             Object.keys(dayCounts).forEach((day) => {
-                result[`${day.toLowerCase()}_avg`] = dayCounts[day] !== 0 ? (dayData[day] / dayCounts[day]) * 264 : 0;
+                result[`${day.toLowerCase()}_avg`] = dayCounts[day] !== 0 ? (dayData[day] / dayCounts[day]) : 0;
             });
             return res.status(200).send({ result, maxData });
         })
@@ -222,7 +221,7 @@ export const flowRate2 = (req, res) => {
         .then((data2) => {
             let data = Object.values(data2).map(item => {
                 return {
-                    data: item.data * 264,
+                    data: item.data,
                     timestamp: item.timestamp
                 }
             });
@@ -253,7 +252,7 @@ export const latestflowRate2 = (req, res) => {
             const dataArray = Object.values(data);
             const lastElement = dataArray[dataArray.length - 1];
             return res.status(200).send({
-                latestflowRate2: lastElement.data*264
+                latestflowRate2: lastElement.data
             });
         })
         .catch((error) => {
@@ -318,10 +317,10 @@ export const avgflowRate2 = (req, res) => {
                 }
             });
 
-            maxData = maxData * 264;
+            maxData = maxData;
             const result = {};
             Object.keys(dayCounts).forEach((day) => {
-                result[`${day.toLowerCase()}_avg`] = dayCounts[day] !== 0 ? (dayData[day] / dayCounts[day])*264 : 0;
+                result[`${day.toLowerCase()}_avg`] = dayCounts[day] !== 0 ? (dayData[day] / dayCounts[day]) : 0;
             });
             return res.status(200).send({ result, maxData });
         })
@@ -329,6 +328,66 @@ export const avgflowRate2 = (req, res) => {
             console.error('Error fetching data:', error);
             return res.status(500).send('Internal Server Error');
         });
+
+};
+
+export const sumflowrates = (req, res) => {
+
+    const starCountRef = ref(db, '/TRANS/FLOW_RATE1');
+    const starCountRef2 = ref(db, '/FLOW_RATE_2/FIT102');
+
+    // Use a Promise to handle the asynchronous nature
+    const getData = () => {
+        return new Promise((resolve, reject) => {
+            onValue(starCountRef, (snapshot) => {
+                const data = snapshot.val();
+                resolve(data);
+            }, (error) => {
+                reject(error);
+            });
+        });
+    };
+
+    const getData2 = () => {
+        return new Promise((resolve, reject) => {
+            onValue(starCountRef2, (snapshot) => {
+                const data = snapshot.val();
+                resolve(data);
+            }, (error) => {
+                reject(error);
+            });
+        });
+    };
+
+    Promise.all([getData(), getData2()])
+        .then(([data1, data2]) => {
+            let flowRate1 = Object.values(data1).map(item => {
+                return {
+                    data: item.data,
+                    timestamp: item.timestamp
+                }
+            });
+            let flowRate2 = Object.values(data2).map(item => {
+                return {
+                    data: item.data,
+                    timestamp: item.timestamp
+                }
+            });
+
+            // Check if both data arrays have been populated before sending the response
+            if (flowRate1.length !== 0 && flowRate2.length !== 0) {
+                // Create an object to store the summed data                         
+
+                res.status(200).send({
+                    sum: flowRate1[flowRate1.length - 1].data + flowRate2[flowRate2.length - 1].data
+                });
+            }
+        })
+        .catch((error) => {
+            console.error('Error fetching data:', error);
+            return res.status(500).send('Internal Server Error');
+        });
+
 
 };
 
@@ -374,7 +433,7 @@ export const totalFt101hr = (req, res) => {
         .then((data2) => {
             let data = Object.values(data2).map(item => {
                 return {
-                    data: item.data * 264,
+                    data: item.data,
                     timestamp: item.timestamp
                 }
             });
@@ -404,7 +463,7 @@ export const totalFt102hr = (req, res) => {
         .then((data2) => {
             let data = Object.values(data2).map(item => {
                 return {
-                    data: item.data * 264,
+                    data: item.data,
                     timestamp: item.timestamp
                 }
             });
@@ -441,4 +500,44 @@ export const getallusers = (req, res) => {
             console.error("Error executing the query:", error);
             res.status(500).json({ error: "Internal Server Error" });
         });
+};
+
+export const insertValues = (req, res) => {    
+    const query = "INSERT INTO watersun.users SET ?";
+
+    const insertData = {
+        username: req.body.username,
+        password: req.body.password,
+        user_role: req.body.user_role,
+        dash_head1: req.body.dash_head1,
+        dash_head2: req.body.dash_head2,
+        dash_head3: req.body.dash_head3,
+        site_head1: req.body.site_head1,
+        site_head2: req.body.site_head2,
+        site_head3: req.body.site_head3,
+    }
+    const executeQuery = (query, insertData) => {
+        return new Promise((resolve, reject) => {
+            mysqldb.query(query, insertData, (err, data) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(data);
+                }
+            });
+        });
+    };
+
+    executeQuery(query, insertData)
+        .then((data) => {
+            // Process the retrieved data, for example, send it as a response to the client
+            res.status(200).json(data);
+        })
+        .catch((error) => {
+            // Handle the error, for example, send an error response to the client
+            console.error("Error executing the query:", error);
+            res.status(500).json({ error: "Internal Server Error" });
+        });
+
+
 };
