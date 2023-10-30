@@ -135,13 +135,13 @@ angular.module("component").component("site", {
             data: ["Mon", "Tues", "Wed", "Thurs", "Fri"],
           },
           yAxis: {
-            data: [0, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200],
+            data: ['25K', "50K", '75K', "100K", '125K', '150K',  "175K", '200K', '250K']
           },
           series: [
             {
               name: "avg",
               type: "bar",
-              data: [5, 20, 36, 10, 10, 20],
+              data: [0, 0, 0, 0, 0, 0],
             },
           ],
         });
@@ -156,13 +156,13 @@ angular.module("component").component("site", {
             data: ["Mon", "Tues", "Wed", "Thurs", "Fri"],
           },
           yAxis: {
-            data: [0, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200],
+            data: ['25K', "50K", '75K', "100K", '125K', '150K',  "175K", '200K', '250K']
           },
           series: [
             {
               name: "avg",
               type: "bar",
-              data: [5, 20, 36, 10, 10, 20],
+              data: [0, 0, 0, 0, 0, 0],
             },
           ],
         });
@@ -178,13 +178,13 @@ angular.module("component").component("site", {
             data: ["Mon", "Tues", "Wed", "Thurs", "Fri"],
           },
           yAxis: {
-            data: [0, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200],
+            data: ['25K', "50K", '75K', "100K", '125K', '150K',  "175K", '200K', '250K']
           },
           series: [
             {
               name: "avg",
               type: "bar",
-              data: [5, 20, 36, 10, 10, 20],
+              data: [0, 0, 0, 0, 0, 0],
             },
           ],
         });

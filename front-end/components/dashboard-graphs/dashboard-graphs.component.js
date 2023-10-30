@@ -80,7 +80,7 @@ angular.module("component").component("dashboardGraph", {
             {
               name: "Total Daily Production",
               type: "bar",
-              data: [5, 20, 36, 10, 10, 20],
+              data: [0, 0, 0, 0, 0, 0],
             },
           ],
         });
@@ -95,13 +95,13 @@ angular.module("component").component("dashboardGraph", {
             data: ["Mon", "Tues", "Wed", "Thurs", "Fri"],
           },
           yAxis: {
-            data: [0 , 3960 , 6600, 11800,  15840, 20000]
+            data: ['25K', "50K", '75K', "100K", '125K', '150K',  "175K", '200K', '250K']
           },
           series: [
             {
               name: "Total Daily Production",
               type: "bar",
-              data: [5, 20, 36, 10, 10, 20],
+              data: [0, 0, 0, 0, 0, 0],
             },
           ],
         });
@@ -117,13 +117,13 @@ angular.module("component").component("dashboardGraph", {
             data: ["Mon", "Tues", "Wed", "Thurs", "Fri"],
           },
           yAxis: {
-            data: [0 , 3960 , 6600, 11800,  15840, 20000]
+            data: ['25K', "50K", '75K', "100K", '125K', '150K',  "175K", '200K', '250K']
           },
           series: [
             {
               name: "Total Daily Production",
               type: "bar",
-              data: [5, 20, 36, 10, 10, 20],
+              data: [0, 0, 0, 0, 0, 0],
             },
           ],
         });
