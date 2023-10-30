@@ -339,10 +339,10 @@ angular.module("component").component("dashboardGraph", {
       };
 
       ctrl.initDashboardSection1Data = function(){
-        DashboardService.getFlowRate1().then(
+        DashboardService.totalFlowRate().then(
           function success(response){
-            console.log(response.data.latestflowRate1);
-            let flow_rate_value = response.data.latestflowRate1.toFixed(2) ;
+            console.log(response.data.sum);
+            let flow_rate_value = response.data.sum.toFixed(2) ;
             ctrl.guageGraphRps1.setOption({
               series: [
                 {

@@ -61,10 +61,10 @@ function UserService($http, API_URL) {
         url: API_URL + '/user/find/' + id
       })
     },
-    addCredit: function (data){
+    setHeading: function (data){
       return $http({
         method: "POST",
-        url: API_URL + '/user/add/credit',
+        url: API_URL + '/values/insertvalues',
         data: data
       }) 
     }

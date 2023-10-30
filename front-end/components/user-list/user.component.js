@@ -57,8 +57,9 @@ angular.module("component").component("user", {
         $rootScope.$broadcast("User:ShowUpdateModal", {id: id});
       }
 
-      ctrl.showCreditUpdateModal = function (agentId){
-        $rootScope.$broadcast("User:ShowCreditModal", {id: agentId});
+      ctrl.showHeadingUpdateModal = function (user){
+        console.log(user);
+        $rootScope.$broadcast("UserHeading:ShowAddModal", {user: user});
       }
     },
   ],

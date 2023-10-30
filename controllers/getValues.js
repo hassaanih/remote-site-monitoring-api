@@ -503,7 +503,9 @@ export const getallusers = (req, res) => {
 };
 
 export const insertValues = (req, res) => {    
-    const query = "INSERT INTO watersun.users SET ?";
+    const username = req.body.username;
+
+    const query = "UPDATE watsun.users SET ? WHERE username = ?";
 
     const insertData = {
         username: req.body.username,
@@ -516,9 +518,9 @@ export const insertValues = (req, res) => {
         site_head2: req.body.site_head2,
         site_head3: req.body.site_head3,
     }
-    const executeQuery = (query, insertData) => {
+    const executeQuery = (query, insertData, username) => {
         return new Promise((resolve, reject) => {
-            mysqldb.query(query, insertData, (err, data) => {
+            mysqldb.query(query, [insertData, username], (err, data) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -528,7 +530,7 @@ export const insertValues = (req, res) => {
         });
     };
 
-    executeQuery(query, insertData)
+    executeQuery(query, insertData, username)
         .then((data) => {
             // Process the retrieved data, for example, send it as a response to the client
             res.status(200).json(data);

@@ -43,6 +43,13 @@ function DashboardService($rootScope, $http, API_URL) {
         url: API_URL + '/values/avgflowRate2'
       });
     },
+
+    totalFlowRate: function (){
+      return $http({
+        method: 'POST',
+        url: API_URL + '/values/sumflowrates'
+      })
+    }
     
   };
 }
